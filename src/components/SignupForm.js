@@ -3,7 +3,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import {toast} from "react-hot-toast"
 import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
-
+import axios from 'axios'
     const SignupForm = ({setIsLoggedIn, isLoggedIn}) => {
     const navigate = useNavigate();
 
@@ -51,6 +51,22 @@ import Navbar from './Navbar';
 
         console.log("printing Final account data ");
         console.log(finalData);
+
+        const url = 'http://localhost:3001/api/auth/signup';
+
+    axios.post(url, finalData, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => {
+      
+        console.log('Response:', response.data);
+      })
+      .catch(error => {
+        
+        console.error('Error:', error);
+      });
 
         navigate("/dashboard");
 
