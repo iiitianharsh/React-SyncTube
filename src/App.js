@@ -17,6 +17,8 @@ import Youtuberprofiles from "./pages/youtuberprofiles.js";
 import MyProjectsEditor from "./pages/MyProjectsEditor.js";
 import ProjectEditorPage from "./components/ProjectEditorPage.js";
 import About from "./pages/About.js";
+import axios from 'axios'
+axios.defaults.withCredentials = true
 
 const App = () => {
   const { fetchuserinfo } = useContext(AppContext);
