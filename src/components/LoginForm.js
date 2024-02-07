@@ -20,6 +20,23 @@ const LoginForm = ({setIsLoggedIn}) => {
   } 
   
   function submitHandler(event) {
+
+      const url = 'http://localhost:3001/api/auth/signin';
+
+    axios.post(url, formData, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => {
+      
+        console.log('Response:', response.data);
+      })
+      .catch(error => {
+        
+        console.error('Error:', error);
+      });
+      
       event.preventDefault();
       setIsLoggedIn(true);
       toast.success("Logged in");
